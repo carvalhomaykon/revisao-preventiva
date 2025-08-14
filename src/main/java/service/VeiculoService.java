@@ -1,7 +1,6 @@
 package service;
 
 import model.Veiculo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repository.VeiculoRepository;
 
@@ -25,7 +24,7 @@ public class VeiculoService {
         return repository.save(veiculo);
     }
 
-    public void delete(Long id){
+    public void deletar(Long id){
         repository.deleteById(id);
     }
 
