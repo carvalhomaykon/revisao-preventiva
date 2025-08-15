@@ -36,4 +36,8 @@ public class VeiculoService {
         return repository.findAll();
     }
 
+    public List<Veiculo> listarVeiculosPorUsuario(Long id){
+        return repository.findByUsuarioId(id);
+    }
+
 }

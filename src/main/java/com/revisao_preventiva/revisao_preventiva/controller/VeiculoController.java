@@ -7,7 +7,7 @@ import service.VeiculoService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/veiculos")
+@RequestMapping("/veiculo")
 public class VeiculoController {
 
     private final VeiculoService service;
@@ -39,6 +39,11 @@ public class VeiculoController {
     @GetMapping("/{id}")
     public Veiculo buscarPorId(@PathVariable Long id){
         return service.buscarPorId(id);
+    }
+
+    @GetMapping("user/{idUsuario}")
+    public List<Veiculo> listarVeiculosPorUsuario(@PathVariable Long id){
+        return service.listarVeiculosPorUsuario(id);
     }
 
 }

@@ -1,6 +1,7 @@
 package controller;
 
 import model.Usuario;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import service.UsuarioService;
 
@@ -10,11 +11,8 @@ import java.util.List;
 @RequestMapping("/usuario")
 public class UsuarioController {
 
-    private final UsuarioService service;
-
-    public UsuarioController(UsuarioService service) {
-        this.service = service;
-    }
+    @Autowired
+    private UsuarioService service;
 
     @PostMapping
     public Usuario criar(@RequestBody Usuario usuario) {
@@ -37,8 +35,8 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public List<Usuario> listarTodosUsuarios(){
-        return service.listarTodosUsuarios();
+    public String test() {
+        return "POST recebido com sucesso!";
     }
 
 }

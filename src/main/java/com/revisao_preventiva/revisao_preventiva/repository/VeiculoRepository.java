@@ -5,9 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.query.Procedure;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface VeiculoRepository extends JpaRepository<Veiculo, Long>{
 
-    //@Procedure(procedureName = "getDataPrevistaRevisao")
-    //void calcularDataPrevistaRevisao(@Param("veiculos_id") Long id){}
+    List<Veiculo> findByUsuarioId(Long UsuarioId);
 
 }
