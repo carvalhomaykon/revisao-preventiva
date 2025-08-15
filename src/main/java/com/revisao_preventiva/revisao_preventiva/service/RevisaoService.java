@@ -1,20 +1,18 @@
-package service;
+package com.revisao_preventiva.revisao_preventiva.service;
 
-import model.Revisao;
-import model.Usuario;
-import model.Veiculo;
-import repository.RevisaoRepository;
-import repository.UsuarioRepository;
+import com.revisao_preventiva.revisao_preventiva.model.Revisao;
+import com.revisao_preventiva.revisao_preventiva.model.Usuario;
+import com.revisao_preventiva.revisao_preventiva.repository.RevisaoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class RevisaoService {
 
-    private final RevisaoRepository repository;
-
-    public RevisaoService(RevisaoRepository repository) {
-        this.repository = repository;
-    }
+    @Autowired
+    private RevisaoRepository repository;
 
     public List<Revisao> listaTodasRevisoes(){
         return repository.findAll();
@@ -24,8 +22,11 @@ public class RevisaoService {
         return repository.findByVeiculoId(veiculoId);
     }
 
-    public Revisao buscarPorId(Long id){
+    public Revisao buscarPorId(Long id) {
         return repository.findById(id).orElse(null);
     }
 
+        public List<Revisao> listarTodasRevisoesVeiculoUserId (Long userId){
+        return repository.findByVeiculoUserId(userId);
+    }
 }

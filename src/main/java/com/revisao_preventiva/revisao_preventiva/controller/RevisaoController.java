@@ -1,23 +1,18 @@
-package controller;
+package com.revisao_preventiva.revisao_preventiva.controller;
 
-import model.Revisao;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-import service.RevisaoService;
+import com.revisao_preventiva.revisao_preventiva.model.Revisao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import com.revisao_preventiva.revisao_preventiva.service.RevisaoService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/revisoes")
+@RequestMapping("/revisao")
 public class RevisaoController {
 
-    private final RevisaoService service;
-
-    public RevisaoController(RevisaoService service) {
-        this.service = service;
-    }
+    @Autowired
+    private RevisaoService service;
 
     @GetMapping
     public List<Revisao> listaTodasRevisoes(){
@@ -25,12 +20,17 @@ public class RevisaoController {
     }
 
     @GetMapping("/veiculo/{veiculoId}")
-    public List<Revisao> listaTodasRevisoesPorVeiculo(Long veiculoId){
+    public List<Revisao> listaTodasRevisoesPorVeiculo(@PathVariable Long veiculoId){
         return service.listaTodasRevisoesPorVeiculo(veiculoId);
     }
 
+    @GetMapping("/usuario/{userId}")
+    public List<Revisao> listarTodasRevisoesVeiculoUserId(@PathVariable Long userId){
+        return service.listarTodasRevisoesVeiculoUserId(userId);
+    }
+
     @GetMapping("/{id}")
-    public Revisao buscaRevisaoPorId(@RequestParam Long id){
+    public Revisao buscaRevisaoPorId(@PathVariable Long id){
         return service.buscarPorId(id);
     }
 

@@ -1,4 +1,4 @@
-package model;
+package com.revisao_preventiva.revisao_preventiva.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package model;
+package com.revisao_preventiva.revisao_preventiva.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -7,14 +7,14 @@ import java.time.LocalDate;
 
 @Data
 @Entity
-@Table(name = "resivoes")
+@Table(name = "revisoes")
 public class Revisao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "veiculos_id")
+    @Column(name = "veiculo_id")
     private Long veiculoId;
 
     @Column(name = "status_revisao")

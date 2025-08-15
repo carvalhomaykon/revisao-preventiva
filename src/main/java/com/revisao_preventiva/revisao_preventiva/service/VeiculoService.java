@@ -1,19 +1,17 @@
-package service;
+package com.revisao_preventiva.revisao_preventiva.service;
 
-import model.Veiculo;
+import com.revisao_preventiva.revisao_preventiva.model.Veiculo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.VeiculoRepository;
+import com.revisao_preventiva.revisao_preventiva.repository.VeiculoRepository;
 
 import java.util.List;
 
 @Service
 public class VeiculoService {
 
-    private final VeiculoRepository repository;
-
-    public VeiculoService(VeiculoRepository repository) {
-        this.repository = repository;
-    }
+    @Autowired
+    private VeiculoRepository repository;
 
     public Veiculo criar(Veiculo veiculo){
         return repository.save(veiculo);
@@ -36,8 +34,8 @@ public class VeiculoService {
         return repository.findAll();
     }
 
-    public List<Veiculo> listarVeiculosPorUsuario(Long id){
-        return repository.findByUsuarioId(id);
+    public List<Veiculo> listarVeiculosPorUsuario(Long userId){
+        return repository.findByUsuarioId(userId);
     }
 
 }

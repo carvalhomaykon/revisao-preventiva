@@ -1,9 +1,9 @@
-package controller;
+package com.revisao_preventiva.revisao_preventiva.controller;
 
-import model.Usuario;
+import com.revisao_preventiva.revisao_preventiva.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import service.UsuarioService;
+import com.revisao_preventiva.revisao_preventiva.service.UsuarioService;
 
 import java.util.List;
 
@@ -35,8 +35,8 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public String test() {
-        return "POST recebido com sucesso!";
+    public List<Usuario> listar() {
+        return service.listarTodosUsuarios();
     }
 
 }

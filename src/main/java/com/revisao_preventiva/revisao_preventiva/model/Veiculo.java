@@ -1,4 +1,4 @@
-package model;
+package com.revisao_preventiva.revisao_preventiva.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -13,7 +13,7 @@ public class Veiculo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "users_id")
+    @Column(name = "user_id")
     private Long userId;
 
     private String tipo;

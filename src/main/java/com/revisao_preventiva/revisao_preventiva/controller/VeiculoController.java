@@ -1,8 +1,9 @@
-package controller;
+package com.revisao_preventiva.revisao_preventiva.controller;
 
-import model.Veiculo;
+import com.revisao_preventiva.revisao_preventiva.model.Veiculo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import service.VeiculoService;
+import com.revisao_preventiva.revisao_preventiva.service.VeiculoService;
 
 import java.util.List;
 
@@ -10,11 +11,8 @@ import java.util.List;
 @RequestMapping("/veiculo")
 public class VeiculoController {
 
-    private final VeiculoService service;
-
-    public VeiculoController(VeiculoService service) {
-        this.service = service;
-    }
+    @Autowired
+    private VeiculoService service;
 
     @PostMapping
     public Veiculo criar(@RequestBody Veiculo veiculo){
@@ -41,9 +39,9 @@ public class VeiculoController {
         return service.buscarPorId(id);
     }
 
-    @GetMapping("user/{idUsuario}")
-    public List<Veiculo> listarVeiculosPorUsuario(@PathVariable Long id){
-        return service.listarVeiculosPorUsuario(id);
+    @GetMapping("usuario/{userId}")
+    public List<Veiculo> listarVeiculosPorUsuario(@PathVariable Long userId){
+        return service.listarVeiculosPorUsuario(userId);
     }
 
 }
