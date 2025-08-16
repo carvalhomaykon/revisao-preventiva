@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface RevisaoRepository extends JpaRepository<Revisao, Long> {
 
-    @Query("SELECT Revisao FROM Revisao r WHERE r.veiculoId IN " +
+    @Query("SELECT r FROM Revisao r WHERE r.veiculoId IN " +
         "(SELECT v.id from Veiculo v WHERE v.userId = :userId)"
     )
     List<Revisao> findByVeiculoUserId(Long userId);

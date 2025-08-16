@@ -201,11 +201,12 @@ DELIMITER $$
         declare km_semanal decimal(10,2);
         declare semanas decimal(10,4);
         declare dias_corridos int;
-        declare km_meta int default 1000;
+        declare km_meta int default 10000;
         declare auxAnoFabri int;
         declare anos_uso int;
         declare data_prevista date;
         declare auxUltimaRevisao date;
+        declare dias_restantes int;
         
         -- Buscar veículo
         select quilometragem_diaria, dias_uso_semana, ano_fabricacao, ultima_revisao
@@ -218,11 +219,12 @@ DELIMITER $$
 			set km_meta = 6000;
 		end if;
         
-        set km_semanal = auxKmDia * auxDiasUso;
-        set semanas = km_meta / km_semanal;
-        set dias_corridos = ceil(semanas * 7);
-        set data_prevista = date_add(auxUltimaRevisao, interval dias_corridos day);
+        set dias_corridos = ceil(km_meta / auxKmDia);
+        set semanas = floor(dias_corridos / auxDiasUso);
+        set dias_restantes = dias_corridos % auxDiasUso;
+        set dias_corridos = (semanas * 7) + dias_restantes;
         
+        set data_prevista = date_add(auxUltimaRevisao, interval dias_corridos day);
         
         call getKmFazerRevisao(veiculo_id,@km_fazer_revisao);
         call getStatus(veiculo_id, @km_fazer_revisao, @status_revisao, data_prevista);
@@ -252,26 +254,12 @@ DELIMITER $$
         
         set anos_uso = year(curdate()) - auxAnoFabri;
         
-		if AuxTipo = 'Carro' then
-			if anos_uso > 5 then
-				set KmMeta = 6000;
-			end if;
-			
-			if auxKm < kmMeta then
-				set km_fazer_revisao = kmMeta + auxKm;
-			else
-				set km_fazer_revisao = auxKM + kmMeta;
-			end if;
-		
-		elseif AuxTipo = 'Moto' then
-			if auxKm < 6000 then
-				set km_fazer_revisao = 6000 + auxKm;
-			end if;
-			
-		else
-			set km_fazer_revisao = null;
-			
+		if anos_uso > 5 then
+			set KmMeta = 6000;
 		end if;
+		
+		set km_fazer_revisao = kmMeta + auxKm;
+		
 	END $$
 DELIMITER ;
 
@@ -302,3 +290,4 @@ DELIMITER $$
         
     END $$
 DELIMITER ;
+
