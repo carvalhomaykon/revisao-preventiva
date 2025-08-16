@@ -1,4 +1,4 @@
-# 🚗 Sistema de Manutenção Preditiva de Veículos
+# 🚗 Sistema de Revisão Preditiva de Veículos
 
 ## 📌 Sobre o Projeto
 Este projeto é um **Sistema de Manutenção Preditiva de Veículos** desenvolvido com:
@@ -20,7 +20,7 @@ O objetivo é prever e gerenciar manutenções, garantindo maior eficiência e s
 ---
 
 ## 🖼️ Diagrama ERR
-![Diagrama ERR](docs/diagrama-er.png)
+![Diagrama ERR](docs/diagrama-err.png)
 
 ---
 
