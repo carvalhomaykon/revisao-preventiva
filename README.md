@@ -25,6 +25,6 @@ O objetivo é prever e gerenciar manutenções, garantindo maior eficiência e s
 ---
 
 ## 👨‍💻 Autor
-- Maykon Silva Carvalho
+- Maykon Carvalho
 - Graduando em Sistemas de Informação - UFRA
 - [Linkedin](https://www.linkedin.com/in/maykon-carvalho-329853208) | [GitHub](https://github.com/carvalhomaykon)
